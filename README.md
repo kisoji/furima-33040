@@ -5,7 +5,7 @@
 | Column              | Type               | Options                                |
 | --------------------|--------------------|----------------------------------------|
 | nickname            | string             | null: false                            |
-| email               | string             | null: false, unique: true, index: true |
+| email               | string             | null: false, unique: true              |
 | password            | encrypted_password | null: false                            |
 | first_name          | string             | null: false                            |
 | family_name         | string             | null: false                            |
@@ -17,7 +17,7 @@
 
 - has_many :items
 - has_one :profiles
-- has_one :sending_destination
+- has_one :order
 
 
 ## profiles テーブル
@@ -37,29 +37,24 @@
 
 | Column              | Type         | Options                        |
 | --------------------| -------------|--------------------------------|
-| item_img            | references   | null: false, foreign_key: true |
 | name                | string       | null: false                    |
 | introduction        | text         | null: false                    |
-| category            | references   | null: false, foreign_key: true |
-| item_condition      | references   | null: false, foreign_key: true |
-| postage_type        | references   | null: false, foreign_key: true |
-| prefecture_code     | integer      | null: false                    |
-| preparation_day     | references   | null: false, foreign_key: true |
+| category_id         | integer      | null: false, foreign_key: true |
 | price               | integer      | null: false                    |
-| seller              | references   | null: false, foreign_key: true |
-| buyer               | references   | foreign_key: true              |
+| user                | references   | null: false, foreign_key: true |
+|                     |              |                                |
 
 ### Association
 
-- belongs_to :users
-- Gem : jp_prefectureを使用して都道府県コードを取得
+- belongs_to :user
+
 
 ## orders テーブル
 
 | Column               | Type         | Options                        |
 | ---------------------|--------------|--------------------------------|
-| user_id              | references   | null: false, foreign_key: true |
-| item_id              | references   | null: false, foreign_key: true |
+| user                 | references   | null: false, foreign_key: true |
+| item                 | references   | null: false, foreign_key: true |
 
 ### Association
 
@@ -70,23 +65,18 @@
 
 | Column                        | Type         | Options                        |
 | ------------------------------|--------------|--------------------------------|
-| destination_first_name        | string       | null: false                    |
-| destination_family_name       | string       | null: false                    |
-| destination_first_name_kana   | string       | null: false                    |
-| destination_family_name_kana  | string       | null: false                    |
 | post_code                     | string       | null: false                    |
-| prefecture_code               | integer      | null: false                    |
+| prefecture_code_id            | integer      | null: false                    |
 | city                          | string       | null: false                    |
 | house_number                  | string       | null: false                    |
 | building_name                 | string       |                                |
-| phone_number                  | string       |unique: ture                    |
-| user                          | references   | null: false, foreign_key: true |
+| phone_number                  | string       | null: false, unique: true      |
+| item                          | references   | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :orders
-- Gem : jp_prefectureを使用して都道府県コードを取得
+- belongs_to :user
+- belongs_to :order
 
 
 
