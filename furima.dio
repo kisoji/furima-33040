@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2020-12-30T06:55:22.820Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="2pATX66-Q5AOmV2upy9E" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2020-12-30T08:48:03.228Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" etag="OftU_PMXvp0o3Zb-rhiE" version="13.10.0" type="embed">
     <diagram id="O7533EYIqYoyhk6JIRFR" name="Page-1">
-        <mxGraphModel dx="1812" dy="2020" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="3272" dy="2384" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -11,9 +11,9 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="291" value="users" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="-920" width="400" height="330" as="geometry"/>
+                    <mxGeometry x="-360" y="-1040" width="400" height="330" as="geometry"/>
                 </mxCell>
-                <mxCell id="292" value="nickname ( string / null:false )&#10;&#10;email  ( string / null:false,unique:true)&#10;&#10;encrypted_password ( string / null:false )&#10;&#10;first_name ( string / null:false )&#10;&#10;family_name ( string / null:false )&#10;&#10;first_name_kana ( string / null:false )&#10;&#10;family_name_kana ( string / null:false )&#10;&#10;birth_day ( date / null:false )&#10;&#10;&#10;has_one : profile, dependent: :destroy &#10;&#10;has_one :order&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="291" vertex="1">
+                <mxCell id="292" value="nickname ( string / null:false )&#10;&#10;email  ( string / null:false,unique:true)&#10;&#10;encrypted_password ( string / null:false )&#10;&#10;first_name ( string / null:false )&#10;&#10;family_name ( string / null:false )&#10;&#10;first_name_kana ( string / null:false )&#10;&#10;family_name_kana ( string / null:false )&#10;&#10;birth_day ( date / null:false )&#10;&#10;&#10;has_many : items &#10;&#10;has_many :orders&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="291" vertex="1">
                     <mxGeometry y="30" width="400" height="300" as="geometry"/>
                 </mxCell>
                 <mxCell id="303" value="" style="endArrow=none;html=1;rounded=0;fontSize=18;" parent="291" edge="1">
@@ -27,10 +27,10 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="310" value="items" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="-950" width="400" height="330" as="geometry"/>
+                    <mxGeometry x="160" y="-1040" width="400" height="360" as="geometry"/>
                 </mxCell>
-                <mxCell id="311" value="name ( string / null:false )&#10;&#10;introduction  ( text / null:false )&#10;&#10;category_id ( integer / null:false )&#10;&#10;condition_id ( integer / null:false )&#10;&#10;delivery fee_id ( integer / null:false )&#10;&#10;prefecture_code_id ( integer / null:false )&#10;&#10;preparation_day_id ( integer / null:false )&#10;&#10;price ( integer / null:false )&#10;&#10;user ( references / null:false,foreign_key : true )&#10;&#10; &#10;belongs_to : user&#10;&#10;&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="310" vertex="1">
-                    <mxGeometry y="30" width="400" height="300" as="geometry"/>
+                <mxCell id="311" value="name ( string / null:false )&#10;&#10;introduction  ( text / null:false )&#10;&#10;category_id ( integer / null:false )&#10;&#10;condition_id ( integer / null:false )&#10;&#10;delivery_fee_id ( integer / null:false )&#10;&#10;prefecture_id ( integer / null:false )&#10;&#10;preparation_day_id ( integer / null:false )&#10;&#10;price ( integer / null:false )&#10;&#10;user ( references / null:false,foreign_key : true )&#10;&#10; &#10;belongs_to : user&#10;&#10;has_one : order &#10;&#10;&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="310" vertex="1">
+                    <mxGeometry y="30" width="400" height="330" as="geometry"/>
                 </mxCell>
                 <mxCell id="312" value="" style="endArrow=none;html=1;rounded=0;fontSize=18;" parent="310" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -42,7 +42,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="313" value="sending_destinations" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="-360" y="-520" width="400" height="270" as="geometry"/>
+                    <mxGeometry x="170" y="-600" width="400" height="270" as="geometry"/>
                 </mxCell>
                 <mxCell id="315" value="" style="endArrow=none;html=1;rounded=0;fontSize=18;" parent="313" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -53,14 +53,14 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="314" value="post_code ( string / null:false )&#10;&#10;prefecture_code_id ( integer / null:false )&#10;&#10;city ( string / null:false )&#10;&#10;house_number ( string / null:false )&#10;&#10;building_name ( string )&#10;&#10;phone_number ( string / null:false unique :ture)&#10;&#10;order ( references / null:false, foreign_key : true )&#10;&#10;&#10;belongs_to : order&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="313" vertex="1">
+                <mxCell id="314" value="post_code ( string / null:false )&#10;&#10;prefecture_id ( integer / null:false )&#10;&#10;city ( string / null:false )&#10;&#10;house_number ( string / null:false )&#10;&#10;building_name ( string )&#10;&#10;phone_number ( string / null:false)&#10;&#10;order ( references / null:false, foreign_key : true )&#10;&#10;&#10;belongs_to : order&#10;&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="313" vertex="1">
                     <mxGeometry y="30" width="400" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="316" value="orders" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=1;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="-430" width="400" height="120" as="geometry"/>
+                    <mxGeometry x="-360" y="-600" width="400" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="317" value="user ( references / null:false, foreign_key : true )&#10;&#10;item ( references / null:false, foreign_key : true )&#10;&#10;has_one : sending_destination&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="316" vertex="1">
-                    <mxGeometry y="30" width="400" height="90" as="geometry"/>
+                <mxCell id="317" value="user ( references / null:false, foreign_key : true )&#10;&#10;item ( references / null:false, foreign_key : true )&#10;&#10;belongs_to : item&#10;&#10;belongs_to : user&#10;&#10;has_one : sending_destination&#10;&#10;&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="316" vertex="1">
+                    <mxGeometry y="30" width="400" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="318" value="" style="endArrow=none;html=1;rounded=0;fontSize=18;" parent="316" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -71,22 +71,28 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="327" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=1;exitY=0.811;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="314" edge="1">
+                <mxCell id="331" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" target="311">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
-                        <mxPoint x="50" y="-270" as="sourcePoint"/>
-                        <mxPoint x="120" y="-370" as="targetPoint"/>
+                        <mxPoint x="40" y="-830" as="sourcePoint"/>
+                        <mxPoint x="140" y="-930" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="329" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;" parent="1" edge="1">
+                <mxCell id="333" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;" edge="1" parent="1">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
-                        <mxPoint x="520" y="-710" as="sourcePoint"/>
-                        <mxPoint x="600" y="-810" as="targetPoint"/>
+                        <mxPoint x="47" y="-740" as="sourcePoint"/>
+                        <mxPoint x="-370" y="-550" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="330" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" parent="1" source="316" edge="1">
+                <mxCell id="334" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=-0.007;entryY=0.068;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="314">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
-                        <mxPoint x="220" y="-460" as="sourcePoint"/>
-                        <mxPoint x="342" y="-590" as="targetPoint"/>
+                        <mxPoint x="40" y="-450" as="sourcePoint"/>
+                        <mxPoint x="140" y="-550" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="335" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmandOne;startArrow=ERmandOne;entryX=-0.007;entryY=0.85;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="311">
+                    <mxGeometry width="100" height="100" relative="1" as="geometry">
+                        <mxPoint x="40" y="-570" as="sourcePoint"/>
+                        <mxPoint x="140" y="-670" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
