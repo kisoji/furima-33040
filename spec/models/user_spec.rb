@@ -7,14 +7,8 @@ RSpec.describe User, type: :model do
     end
     
     context 'ユーザー登録ができる時' do
-        it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できること" do
+        it "nicknameとemail、passwordとpassword_confirmation、first_nameとfamily_name、first_name_kanaとfamily_name_kana、birth_dayが存在すれば登録できること" do
         expect(@user).to be_valid
-        end
-        it "first_nameとfamily_name、first_name_kanaとfamily_name_kanaが存在すれば登録できること" do
-          expect(@user).to be_valid
-        end
-        it "fbirth_dayが存在すれば登録できること" do
-          expect(@user).to be_valid
         end
         it "passwordが6文字以上であれば登録できること" do
           @user.password = "12345a"
@@ -51,8 +45,8 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
       it "passwordとpassword_confirmationが不一致では登録できないこと" do
-        @user.password = "123456"
-        @user.password_confirmation = "1234567"
+        @user.password = "123bbb"
+        @user.password_confirmation = "124bbb"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
@@ -70,9 +64,9 @@ RSpec.describe User, type: :model do
       end
     
       it "emailに@を含まないと登録できないこと" do
-        @user.email = nil
+        @user.email = 'test.co.jp'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+        expect(@user.errors.full_messages).to include("Email is invalid")
       end
 
       it "passwordが空では登録できないこと" do
@@ -157,8 +151,8 @@ RSpec.describe User, type: :model do
       end
 
       it "passwordが全角では登録できない" do
-        @user.password = "９９９９９９"
-        @user.password_confirmation = "９９９９９９"
+        @user.password = "９９９ＫＫＫ"
+        @user.password_confirmation = "９９９ＫＫＫ"
         @user.valid?
         expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
