@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
-  with_options presence: true,format: {with:/\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters"} do
+  with_options presence: true,format: {with:/\A[ぁ-んァ-ン一-龥々]+\z/, message: "Full-width characters"} do
     validates :first_name
     validates :family_name
   end
