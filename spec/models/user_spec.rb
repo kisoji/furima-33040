@@ -102,6 +102,7 @@ RSpec.describe User, type: :model do
         @user.birth_day = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Birth day can't be blank")
+        
       end
 
       it "passwordが6文字以上でないと登録できない" do
