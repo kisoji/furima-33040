@@ -13,17 +13,14 @@ class User < ApplicationRecord
     validates :first_name
     validates :family_name
   end
-
   with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width katakana characters' } do
     validates :first_name_kana
     validates :family_name_kana
   end
-
   with_options presence: true do
     validates :birth_day
     validates :nickname
   end
-
   has_many :items
   has_many :orders
 end
