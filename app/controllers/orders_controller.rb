@@ -1,16 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  # before_action :sold_out_item, only: [:index]
-
+  before_action :set_item, only: [:index, :create]
+  
   def index
-    @item = Item.find(params[:item_id])
     return redirect_to root_path if @item.user.id == current_user.id || !@item.order.nil?
 
     @user_order = UserOrder.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @user_order = UserOrder.new(order_params)
     if @user_order.valid?
       pay_item
@@ -37,8 +35,9 @@ class OrdersController < ApplicationController
       currency: 'jpy' # 通貨の種類（日本円）
     )
   end
+  
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
-  # def sold_out_item
-  #   redirect_to root_path if @item.user.id == current_user.id || @item.order != nil
-  # end
 end
