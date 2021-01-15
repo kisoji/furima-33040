@@ -11,4 +11,3 @@ FactoryBot.define do
     item_id { 1 }
   end
 end
-
